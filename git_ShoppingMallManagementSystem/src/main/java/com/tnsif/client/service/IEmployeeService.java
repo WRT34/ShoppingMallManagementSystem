@@ -1,8 +1,6 @@
 package com.tnsif.client.service;
 
 
-import java.util.List;
-
 import com.tnsif.client.entities.Employee;
 
 public interface IEmployeeService {
@@ -14,7 +12,5 @@ public interface IEmployeeService {
 	Employee searchEmployee(Integer id);
 	
 	void deleteEmployee(Integer id);
-
-	List<Employee> listAllEmployees();
 	
 }

@@ -1,6 +1,5 @@
 package com.tnsif.client.service;
 
-import java.util.List;
 
 import javax.transaction.Transactional;
 
@@ -44,10 +43,6 @@ public class EmployeeServiceImpl implements IEmployeeService {
 		repo.deleteById(id);
 	}
 
-	@Override
-	public List<Employee> listAllEmployees() {
-		return repo.findAll();
-	}
 	
 
 }

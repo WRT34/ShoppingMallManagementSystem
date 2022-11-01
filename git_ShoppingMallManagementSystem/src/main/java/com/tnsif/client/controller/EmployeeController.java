@@ -1,6 +1,5 @@
 package com.tnsif.client.controller;
 
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,12 +23,7 @@ public class EmployeeController {
 	@Autowired
 	private IEmployeeService service;
 		
-	// RESTful API methods for Retrieval operations
-	@GetMapping("/list")
-	public List<Employee> getAllEmployees(){
-		return service.listAllEmployees();
-	}
-	
+	// RESTful API methods for Retrieval operation
 	@GetMapping("/search/{id}")
 	public ResponseEntity<Employee> getEmployeeById(@PathVariable Integer id){
 		Employee employee = service.searchEmployee(id);

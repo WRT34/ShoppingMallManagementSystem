@@ -18,7 +18,7 @@ public class ShopOwner {
 	private String address;
 	
 //	@OneToOne(cascade = CascadeType.ALL, mappedBy = "shopOwner")
-//	private Shop shop;
+	private Shop shop;
 	
 	public ShopOwner() {
 		super();

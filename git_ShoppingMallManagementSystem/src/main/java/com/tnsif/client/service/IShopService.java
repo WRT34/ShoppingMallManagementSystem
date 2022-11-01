@@ -1,7 +1,7 @@
 package com.tnsif.client.service;
 
-import java.util.List;
-
+import com.tnsif.client.entities.Employee;
+import com.tnsif.client.entities.Item;
 import com.tnsif.client.entities.Shop;
 
 public interface IShopService {
@@ -13,6 +13,10 @@ public interface IShopService {
 	Shop searchShop(Integer id);
 	
 	void deleteShop(Integer id);
-
-	List<Shop> listAllShops();
+	
+	void addEmployee(Employee employee);
+	
+	void updateEmployee(Integer id, Employee employee);
+	
+	void addItem(Item item);
 }

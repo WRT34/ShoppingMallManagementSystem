@@ -24,10 +24,6 @@ public class ShopController {
 	@Autowired
 	private IShopService service;
 	
-	@GetMapping("/list")
-	public List<Shop> getAllShopOwners(){
-		return service.listAllShops();
-	}
 	
 	@PostMapping("/create")
 	public void createShop(@RequestBody Shop shop) {
