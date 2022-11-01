@@ -7,19 +7,26 @@ import org.springframework.stereotype.Service;
 
 import com.tnsif.client.entities.Shop;
 import com.tnsif.client.entities.User;
+import com.tnsif.client.repository.IShopRepository;
 import com.tnsif.client.repository.IUserRepository;
 
 @Service
 @Transactional
 public class AdminServiceImpl implements IAdminService{
 
+//	@Autowired
+//	IMallAdminRepository adminRepository;
+	
+	@Autowired
+	IShopRepository shopRepository;
+	
 	@Autowired
 	IUserRepository userRepository;
 	
 	@Override
 	public void approveNewShop(Shop shop) {
 		// TODO Auto-generated method stub
-		
+		shopRepository.save(shop);
 	}
 
 	@Override

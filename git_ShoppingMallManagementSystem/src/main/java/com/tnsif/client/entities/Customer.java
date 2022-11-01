@@ -3,6 +3,7 @@ package com.tnsif.client.entities;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,7 +18,8 @@ public class Customer {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id ;
 	private String name ;
-	private String email;
+	private String email ;
+	private String phone;
 	
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(referencedColumnName = "id")
@@ -47,6 +49,14 @@ public class Customer {
 		this.email = email;
 	}
 
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
 	public List<OrderDetails> getOrders() {
 		return orders;
 	}
@@ -54,6 +64,7 @@ public class Customer {
 	public void setOrders(List<OrderDetails> orders) {
 		this.orders = orders;
 	}
+	
 
 	
 	

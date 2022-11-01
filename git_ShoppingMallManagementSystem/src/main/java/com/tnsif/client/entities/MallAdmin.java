@@ -21,12 +21,11 @@ public class MallAdmin {
 	@OneToOne(cascade = CascadeType.ALL)
 	private Mall mall;
 	
-	@OneToOne(cascade = CascadeType.ALL)
-	private ShopOwner shopOwner;
-	
-	@OneToOne(cascade = CascadeType.ALL)
-	private User user;
-	
+//	@OneToOne(cascade = CascadeType.ALL)
+//	private ShopOwner shopOwner;
+//	
+//	@OneToOne(cascade = CascadeType.ALL)
+//	private User user;
 
 	public Integer getId() {
 		return id;
@@ -78,24 +77,24 @@ public class MallAdmin {
 	}
 
 
-	public ShopOwner getShopOwner() {
-		return shopOwner;
-	}
-
-
-	public void setShopOwner(ShopOwner shopOwner) {
-		this.shopOwner = shopOwner;
-	}
-
-
-	public User getUser() {
-		return user;
-	}
-
-
-	public void setUser(User user) {
-		this.user = user;
-	}
+//	public ShopOwner getShopOwner() {
+//		return shopOwner;
+//	}
+//
+//
+//	public void setShopOwner(ShopOwner shopOwner) {
+//		this.shopOwner = shopOwner;
+//	}
+//
+//
+//	public User getUser() {
+//		return user;
+//	}
+//
+//
+//	public void setUser(User user) {
+//		this.user = user;
+//	}
 
 
 	@Override

@@ -17,20 +17,9 @@ public class ShopOwner {
 	private LocalDate dob;
 	private String address;
 	
-//	@OneToOne(cascade = CascadeType.ALL, mappedBy = "shopOwner")
 	private Shop shop;
-	
-	public ShopOwner() {
-		super();
-	}
-
-	public ShopOwner(Integer id, String name, LocalDate dob, String address) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.dob = dob;
-		this.address = address;
-	}
+//	@OneToOne(cascade = CascadeType.ALL, mappedBy = "shopOwner")
+//	private Shop shop;
 
 	public Integer getId() {
 		return id;
@@ -64,5 +53,13 @@ public class ShopOwner {
 		this.address = address;
 	}
 
+	public Shop getShop() {
+		return shop;
+	}
+
+	public void setShop(Shop shop) {
+		this.shop = shop;
+	}
 	
+
 }

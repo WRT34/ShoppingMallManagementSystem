@@ -11,10 +11,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import org.springframework.beans.factory.annotation.Autowired;
+	
 	
 @Entity
 public class Shop {
-	
+										
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer shopId;
@@ -23,56 +25,35 @@ public class Shop {
 	private String shopStatus;
 	private String leaseStatus;
 	
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(referencedColumnName = "shopId")
+	private List<Customer> customers;
+	
 	@OneToOne(cascade = CascadeType.ALL)
 	private ShopOwner shopOwner;
 	
 	@OneToMany (cascade = CascadeType.ALL)
 	@JoinColumn(referencedColumnName = "shopId")
-	private List<Employee> shopEmployees;
+	private List<Employee> employees;
 	
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(referencedColumnName = "shopId")
 	private List<Item> items;
-	
-	public Shop() {
-		super();
-	}
 
-	public Shop(Integer shopId, String shopCategory, List<Employee> shopEmployee, String shopName, String shopStatus,
-			ShopOwner shopOwner, String leaseStatus, List<Item> items) {
-		super();
-		this.shopId = shopId;
-		this.shopCategory = shopCategory;
-		this.shopEmployees = shopEmployee;
-		this.shopName = shopName;
-		this.shopStatus = shopStatus;
-		this.shopOwner = shopOwner;
-		this.leaseStatus = leaseStatus;
-		this.items = items;
-	}
-	
 	public Integer getShopId() {
 		return shopId;
 	}
-	
+
 	public void setShopId(Integer shopId) {
 		this.shopId = shopId;
 	}
-	
+
 	public String getShopCategory() {
 		return shopCategory;
 	}
 
 	public void setShopCategory(String shopCategory) {
 		this.shopCategory = shopCategory;
-	}
-
-	public List<Employee> getShopEmployee() {
-		return shopEmployees;
-	}
-
-	public void setShopEmployee(List<Employee> shopEmployee) {
-		this.shopEmployees = shopEmployee;
 	}
 
 	public String getShopName() {
@@ -91,6 +72,22 @@ public class Shop {
 		this.shopStatus = shopStatus;
 	}
 
+	public String getLeaseStatus() {
+		return leaseStatus;
+	}
+
+	public void setLeaseStatus(String leaseStatus) {
+		this.leaseStatus = leaseStatus;
+	}
+
+	public List<Customer> getCustomers() {
+		return customers;
+	}
+
+	public void setCustomers(List<Customer> customers) {
+		this.customers = customers;
+	}
+
 	public ShopOwner getShopOwner() {
 		return shopOwner;
 	}
@@ -99,12 +96,12 @@ public class Shop {
 		this.shopOwner = shopOwner;
 	}
 
-	public String getLeaseStatus() {
-		return leaseStatus;
+	public List<Employee> getEmployees() {
+		return employees;
 	}
 
-	public void setLeaseStatus(String leaseStatus) {
-		this.leaseStatus = leaseStatus;
+	public void setEmployees(List<Employee> employees) {
+		this.employees = employees;
 	}
 
 	public List<Item> getItems() {
@@ -114,6 +111,9 @@ public class Shop {
 	public void setItems(List<Item> items) {
 		this.items = items;
 	}
+
+
+	
 	
 	
 	

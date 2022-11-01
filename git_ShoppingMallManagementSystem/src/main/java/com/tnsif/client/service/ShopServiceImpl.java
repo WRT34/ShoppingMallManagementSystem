@@ -41,10 +41,11 @@ public class ShopServiceImpl implements IShopService{
 		 updateShop.setItems(shop.getItems());
 		 updateShop.setLeaseStatus(shop.getLeaseStatus());
 		 updateShop.setShopCategory(shop.getShopCategory());
-		 updateShop.setShopEmployee(shop.getShopEmployee());
 		 updateShop.setShopName(shop.getShopName());
 		 updateShop.setShopOwner(shop.getShopOwner());
 		 updateShop.setShopStatus(shop.getShopStatus());
+		 updateShop.setCustomers(shop.getCustomers());
+		 updateShop.setEmployees(shop.getEmployees());
 		 this.addShop(updateShop);
 	}
 

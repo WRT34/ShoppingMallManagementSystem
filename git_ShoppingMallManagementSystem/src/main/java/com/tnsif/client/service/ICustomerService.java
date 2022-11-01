@@ -4,13 +4,14 @@ import java.util.List;
 
 import com.tnsif.client.entities.Item;
 import com.tnsif.client.entities.Mall;
+import com.tnsif.client.entities.OrderDetails;
 import com.tnsif.client.entities.User;
 
 public interface ICustomerService {
 
 	List<Item> searchItem(String itemName);
 	
-	Item orderItem(Item Item);
+	void orderItem(OrderDetails order);
 	
 	Mall searchMall(Integer id);
 	
