@@ -31,7 +31,7 @@ public class MallAdminController {
 		 service.approveNewShop(shop);
 	}	
 	
-	@PutMapping("/update/{id}")
+	@PutMapping("/updateUser/{id}")
 	public void updateUser(@PathVariable Integer id,@RequestBody User user){
 		service.updateUser(id, user);
 	}
