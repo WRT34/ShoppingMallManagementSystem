@@ -18,14 +18,14 @@ public class User {
 	private String type;
 	private String password;
 	
-	@OneToOne(cascade = CascadeType.ALL)
-	private Customer customer;
-	
-	@OneToOne(cascade = CascadeType.ALL)
-	private MallAdmin mallAdmin;
-	
-	@OneToOne(cascade = CascadeType.ALL)
-	private ShopOwner shopOwner;
+//	@OneToOne(cascade = CascadeType.ALL, mappedBy = "user")
+//	private Customer customer;
+//	
+//	@OneToOne(cascade = CascadeType.ALL, mappedBy = "user")
+//	private MallAdmin mallAdmin;
+//	
+//	@OneToOne(cascade = CascadeType.ALL, mappedBy = "user")
+//	private ShopOwner shopOwner;
 	
 	public User(Integer id, String name, String type, String password, Customer customer, MallAdmin mallAdmin,
 			ShopOwner shopOwner) {
@@ -34,11 +34,18 @@ public class User {
 		this.name = name;
 		this.type = type;
 		this.password = password;
-		this.customer = customer;
-		this.mallAdmin = mallAdmin;
-		this.shopOwner = shopOwner;
+//		this.customer = customer;
+//		this.mallAdmin = mallAdmin;
+//		this.shopOwner = shopOwner;
 	}
 	
+	
+	
+	public User() {
+		super();
+	}
+
+
 
 	public Integer getId() {
 		return id;
@@ -72,30 +79,30 @@ public class User {
 		this.password = password;
 	}
 
-	public Customer getCustomer() {
-		return customer;
-	}
-
-
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
-	}
-
-	public MallAdmin getMallAdmin() {
-		return mallAdmin;
-	}
-
-	public void setMallAdmin(MallAdmin mallAdmin) {
-		this.mallAdmin = mallAdmin;
-	}
-
-	public ShopOwner getShopOwner() {
-		return shopOwner;
-	}
-
-	public void setShopOwner(ShopOwner shopOwner) {
-		this.shopOwner = shopOwner;
-	}
+//	public Customer getCustomer() {
+//		return customer;
+//	}
+//
+//
+//	public void setCustomer(Customer customer) {
+//		this.customer = customer;
+//	}
+//
+//	public MallAdmin getMallAdmin() {
+//		return mallAdmin;
+//	}
+//
+//	public void setMallAdmin(MallAdmin mallAdmin) {
+//		this.mallAdmin = mallAdmin;
+//	}
+//
+//	public ShopOwner getShopOwner() {
+//		return shopOwner;
+//	}
+//
+//	public void setShopOwner(ShopOwner shopOwner) {
+//		this.shopOwner = shopOwner;
+//	}
 
 	@Override
 	public String toString() {

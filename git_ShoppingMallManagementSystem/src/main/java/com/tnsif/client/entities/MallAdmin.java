@@ -18,14 +18,14 @@ public class MallAdmin {
 	private String password;
 	private String phone;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.ALL, mappedBy = "mallAdmin")
 	private Mall mall;
 	
 //	@OneToOne(cascade = CascadeType.ALL)
 //	private ShopOwner shopOwner;
 //	
-//	@OneToOne(cascade = CascadeType.ALL)
-//	private User user;
+	@OneToOne(cascade = CascadeType.ALL)
+	private User user;
 
 	public Integer getId() {
 		return id;

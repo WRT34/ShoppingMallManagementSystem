@@ -19,10 +19,11 @@ public class ShopOwner {
 	private LocalDate dob;
 	private String address;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.ALL ,mappedBy = "shopOwner")
 	private Shop shop;
-//	@OneToOne(cascade = CascadeType.ALL, mappedBy = "shopOwner")
-//	private Shop shop;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	private User user;
 
 	public Integer getId() {
 		return id;
@@ -56,13 +57,13 @@ public class ShopOwner {
 		this.address = address;
 	}
 
-	public Shop getShop() {
-		return shop;
-	}
-
-	public void setShop(Shop shop) {
-		this.shop = shop;
-	}
-	
+//	public Shop getShop() {
+//		return shop;
+//	}
+//
+//	public void setShop(Shop shop) {
+//		this.shop = shop;
+//	}
+//	
 
 }
