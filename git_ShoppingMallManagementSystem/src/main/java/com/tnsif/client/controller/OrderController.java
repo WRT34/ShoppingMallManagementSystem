@@ -29,9 +29,14 @@ public class OrderController {
 	}
 	
 	@GetMapping("/search/{id}")
-	public ResponseEntity<OrderDetails> searchOrder(@PathVariable Integer id) {
-		OrderDetails orderDetails = orderService.searchOrder(id);
-		return new ResponseEntity<OrderDetails>(orderDetails, HttpStatus.OK);
+	public ResponseEntity<?> searchOrder(@PathVariable Integer id) {
+		try {
+			OrderDetails orderDetails = orderService.searchOrder(id);
+			return new ResponseEntity<OrderDetails>(orderDetails, HttpStatus.OK);
+		} catch (Exception e) {
+			// TODO: handle exception
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
 	}
 	
 	@PostMapping("/addItem")

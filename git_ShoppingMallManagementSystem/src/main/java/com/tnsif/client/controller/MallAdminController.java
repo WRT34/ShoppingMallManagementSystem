@@ -1,6 +1,10 @@
 package com.tnsif.client.controller;
 
+import java.util.NoSuchElementException;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -28,19 +32,37 @@ public class MallAdminController {
 	}	
 	
 	@PutMapping("/updateUser/{id}")
-	public void updateUser(@PathVariable Integer id,@RequestBody User user){
-		service.updateUser(id, user);
+	public ResponseEntity<?> updateUser(@PathVariable Integer id,@RequestBody User user){
+		try {
+			service.updateUser(id, user);
+			return new ResponseEntity<>("User updated", HttpStatus.OK);
+		} catch (NoSuchElementException e) {
+			// TODO Auto-generated catch block
+			return new ResponseEntity<>("User not found", HttpStatus.NOT_FOUND);
+		}
 	}
 	
 	@PutMapping("/updateMall/{id}")
-	public void updateMall(@PathVariable Integer id,@RequestBody Mall mall){
-		service.updateMall(id, mall);
+	public ResponseEntity<?> updateMall(@PathVariable Integer id,@RequestBody Mall mall){
+		try {
+			service.updateMall(id, mall);
+			return new ResponseEntity<>("Mall updated", HttpStatus.OK);
+		} catch (NoSuchElementException e) {
+			// TODO Auto-generated catch block
+			return new ResponseEntity<>("Mall not found", HttpStatus.NOT_FOUND);
+		}
 	}
 	
 	@GetMapping("/searchUser/{id}")
-	public User searchUser(@PathVariable Integer id) {
+	public ResponseEntity<?> searchUser(@PathVariable Integer id) {
 		// TODO Auto-generated method stub
-		return service.searchUser(id);
+		try {
+		    User user = service.searchUser(id);
+		    return new ResponseEntity<User>(user, HttpStatus.OK);
+		}
+		catch(NoSuchElementException e) {
+			return new ResponseEntity<>("User not found", HttpStatus.NOT_FOUND);
+		}
 	}
 
 	@PostMapping("/addUser")

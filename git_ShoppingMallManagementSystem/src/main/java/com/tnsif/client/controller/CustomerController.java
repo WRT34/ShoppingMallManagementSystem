@@ -1,6 +1,7 @@
 package com.tnsif.client.controller;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -26,9 +27,14 @@ public class CustomerController {
 	
 	
 	@GetMapping("/searchItem/{name}")
-	public ResponseEntity<List<Item>> listItemsByName(@PathVariable String name){
-		List<Item> items = customerService.searchItem(name);
-		return new ResponseEntity<List<Item>>(items, HttpStatus.OK);
+	public ResponseEntity<?> listItemsByName(@PathVariable String name){
+		try {
+			List<Item> items = customerService.searchItem(name);
+			return new ResponseEntity<List<Item>>(items, HttpStatus.OK);
+		} catch (NoSuchElementException e) {
+			// TODO: handle exception
+			return new ResponseEntity<>("No items found",HttpStatus.NOT_FOUND);
+		}
 	}
 	
 	

@@ -1,6 +1,8 @@
 package com.tnsif.client.controller;
 
 
+import java.util.NoSuchElementException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,9 +27,14 @@ public class EmployeeController {
 		
 	// RESTful API methods for Retrieval operation
 	@GetMapping("/search/{id}")
-	public ResponseEntity<Employee> getEmployeeById(@PathVariable Integer id){
-		Employee employee = service.searchEmployee(id);
-		return new ResponseEntity<Employee>(employee, HttpStatus.OK);
+	public ResponseEntity<?> getEmployeeById(@PathVariable Integer id){
+		try {
+			Employee employee = service.searchEmployee(id);
+			return new ResponseEntity<Employee>(employee, HttpStatus.OK);
+		} catch (NoSuchElementException e) {
+			// TODO Auto-generated catch block
+			return new ResponseEntity<>("Employee not found", HttpStatus.NOT_FOUND);
+		}
 	}	
 	
 	//RESTful API method for Create operation

@@ -29,13 +29,13 @@ public class ShopController {
 	}
 	
 	@GetMapping("/search/{id}")
-	public ResponseEntity<Shop> getShopOwnerById(@PathVariable Integer id){
+	public ResponseEntity<?> getShopOwnerById(@PathVariable Integer id){
 		try {
 			Shop Shop = service.searchShop(id);
 			return new ResponseEntity<Shop>(Shop, HttpStatus.OK);
 		} catch (NoSuchElementException e) {
 			// TODO: handle exception
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+			return new ResponseEntity<>("Shop Not Found with ID "+id,HttpStatus.NOT_FOUND);
 		}
 	}
 	
@@ -48,11 +48,11 @@ public class ShopController {
 	public ResponseEntity<?> updateShopOwner(@PathVariable Integer id,@RequestBody Shop shop) {
 		try {
 			service.updateShop(id, shop);
-			return new ResponseEntity<>(HttpStatus.OK);
+			return new ResponseEntity<>("Shop updated",HttpStatus.OK);
 				
 		} catch (NoSuchElementException e) {
 			// TODO Auto-generated catch block
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+			return new ResponseEntity<>("Shop not found",HttpStatus.NOT_FOUND);
 		}	
 	}
 }
