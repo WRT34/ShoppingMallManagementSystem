@@ -32,7 +32,7 @@ public class MallAdminController {
 		service.updateUser(id, user);
 	}
 	
-	@PutMapping("/update/{id}")
+	@PutMapping("/updateMall/{id}")
 	public void updateMall(@PathVariable Integer id,@RequestBody Mall mall){
 		service.updateMall(id, mall);
 	}
