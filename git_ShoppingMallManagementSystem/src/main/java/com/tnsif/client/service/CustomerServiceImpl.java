@@ -34,7 +34,7 @@ public class CustomerServiceImpl implements ICustomerService {
 	@Override
 	public List<Item> searchItem(String itemName) {
 		// TODO Auto-generated method stub
-		return itemRepository.findByName(itemName);
+		return itemRepository.findByNameContaining(itemName);
 	}
 
 	@Override

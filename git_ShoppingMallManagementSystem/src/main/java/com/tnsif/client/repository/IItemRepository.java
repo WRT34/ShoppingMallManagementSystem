@@ -8,5 +8,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.tnsif.client.entities.Item;
 
 public interface IItemRepository extends JpaRepository<Item, Integer>{
-	List<Item> findByName(String name);
+	List<Item> findByNameContaining(String name);
 }
