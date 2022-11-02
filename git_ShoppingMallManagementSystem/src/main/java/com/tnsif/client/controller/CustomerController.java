@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.tnsif.client.entities.Item;
 import com.tnsif.client.entities.Mall;
 import com.tnsif.client.entities.OrderDetails;
+import com.tnsif.client.repository.IItemRepository;
 import com.tnsif.client.service.ICustomerService;
 
 @RestController
@@ -32,9 +33,14 @@ public class CustomerController {
 		return new ResponseEntity<List<Item>>(items, HttpStatus.OK);
 	}
 	
-	@PostMapping("/orderItem")
-	public void orderItem(@RequestBody OrderDetails order) {
-		customerService.orderItem(order);
+//	@PostMapping("/orderItem")
+//	public void orderItem(@RequestBody OrderDetails order) {
+//		customerService.orderItem(order);
+//	}
+	
+	@PostMapping("/orderItems")
+	public void orderItems(@RequestBody Item item) {
+		customerService.orderItem(item);
 	}
 	
 	@DeleteMapping("/cancelOrder/{id}")

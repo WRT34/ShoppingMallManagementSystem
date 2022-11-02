@@ -19,14 +19,14 @@ public class Mall {
 		private String location;
 		private String categories;
 		
-//		@OneToOne(cascade = CascadeType.ALL)
-//		private MallAdmin mallAdmin;
+		@OneToOne(cascade = CascadeType.ALL)
+		private MallAdmin mallAdmin;
 		
 //		@OneToMany(cascade = CascadeType.ALL)
 //		@JoinColumn(referencedColumnName = "id")
 //		private List<Shop> shopId;
 		
-		private Shop shop;
+//		private Shop shop;
 
 
 //		public List<Shop> getShopId() {
@@ -81,13 +81,23 @@ public class Mall {
 		}
 
 
-		public Shop getShop() {
-			return shop;
+//		public Shop getShop() {
+//			return shop;
+//		}
+//
+//
+//		public void setShop(Shop shop) {
+//			this.shop = shop;
+//		}
+
+
+		public MallAdmin getMallAdmin() {
+			return mallAdmin;
 		}
 
 
-		public void setShop(Shop shop) {
-			this.shop = shop;
+		public void setMallAdmin(MallAdmin mallAdmin) {
+			this.mallAdmin = mallAdmin;
 		}
 
 

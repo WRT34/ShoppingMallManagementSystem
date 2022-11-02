@@ -10,8 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-
-import org.springframework.beans.factory.annotation.Autowired;
 	
 	
 @Entity
@@ -25,9 +23,9 @@ public class Shop {
 	private String shopStatus;
 	private String leaseStatus;
 	
-	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(referencedColumnName = "shopId")
-	private List<Customer> customers;
+//	@OneToMany(cascade = CascadeType.ALL)
+//	@JoinColumn(referencedColumnName = "shopId")
+//	private List<Customer> customers;
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	private ShopOwner shopOwner;
@@ -80,13 +78,13 @@ public class Shop {
 		this.leaseStatus = leaseStatus;
 	}
 
-	public List<Customer> getCustomers() {
-		return customers;
-	}
-
-	public void setCustomers(List<Customer> customers) {
-		this.customers = customers;
-	}
+//	public List<Customer> getCustomers() {
+//		return customers;
+//	}
+//
+//	public void setCustomers(List<Customer> customers) {
+//		this.customers = customers;
+//	}
 
 	public ShopOwner getShopOwner() {
 		return shopOwner;

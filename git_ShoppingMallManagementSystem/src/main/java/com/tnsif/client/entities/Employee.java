@@ -21,7 +21,7 @@ public class Employee {
 	private String designation;
 	
 //	@ManyToOne(cascade = CascadeType.ALL)
-	private Shop shop;
+//	private Shop shop;
 
 	public Integer getId() {
 		return id;
@@ -71,13 +71,13 @@ public class Employee {
 		this.designation = designation;
 	}
 
-	public Shop getShop() {
-		return shop;
-	}
-
-	public void setShop(Shop shop) {
-		this.shop = shop;
-	}
+//	public Shop getShop() {
+//		return shop;
+//	}
+//
+//	public void setShop(Shop shop) {
+//		this.shop = shop;
+//	}
 	
 
 	

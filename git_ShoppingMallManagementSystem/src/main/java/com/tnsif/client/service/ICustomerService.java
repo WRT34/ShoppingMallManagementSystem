@@ -11,7 +11,7 @@ public interface ICustomerService {
 
 	List<Item> searchItem(String itemName);
 	
-	void orderItem(OrderDetails order);
+	void orderItem(Item item);
 	
 	Mall searchMall(Integer id);
 	

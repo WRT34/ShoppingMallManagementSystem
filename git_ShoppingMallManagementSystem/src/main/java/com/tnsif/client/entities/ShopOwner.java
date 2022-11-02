@@ -2,10 +2,12 @@ package com.tnsif.client.entities;
 
 import java.time.LocalDate;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class ShopOwner {
@@ -17,6 +19,7 @@ public class ShopOwner {
 	private LocalDate dob;
 	private String address;
 	
+	@OneToOne(cascade = CascadeType.ALL)
 	private Shop shop;
 //	@OneToOne(cascade = CascadeType.ALL, mappedBy = "shopOwner")
 //	private Shop shop;

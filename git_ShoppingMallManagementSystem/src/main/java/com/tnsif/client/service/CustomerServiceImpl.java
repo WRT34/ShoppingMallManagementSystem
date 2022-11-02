@@ -2,7 +2,10 @@ package com.tnsif.client.service;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.tnsif.client.entities.Item;
 import com.tnsif.client.entities.Mall;
@@ -13,6 +16,8 @@ import com.tnsif.client.repository.IMallRepository;
 import com.tnsif.client.repository.IOrderRepository;
 import com.tnsif.client.repository.IUserRepository;
 
+@Service
+@Transactional
 public class CustomerServiceImpl implements ICustomerService {
 
 	@Autowired
@@ -34,10 +39,11 @@ public class CustomerServiceImpl implements ICustomerService {
 	}
 
 	@Override
-	public void orderItem(OrderDetails order) {
+	public void orderItem(Item item) {
 		// TODO Auto-generated method stub
-		orderRepository.save(order);
+		itemRepository.save(item);
 	}
+
 
 	@Override
 	public Mall searchMall(Integer id) {

@@ -19,11 +19,11 @@ public class OrderDetails {
 	private Float total;
 	private String paymentMode;
 	
-	@ManyToOne
-	private Shop shop_id;
+//	@ManyToOne
+//	private Shop shop_id;
 	
-	@ManyToMany
-	private Customer customer;
+//	@ManyToMany
+//	private Customer customer;
 	
 	public Integer getId() {
 		return id;
@@ -49,18 +49,18 @@ public class OrderDetails {
 	public void setPaymentMode(String paymentMode) {
 		this.paymentMode = paymentMode;
 	}
-	public Shop getShop_id() {
-		return shop_id;
-	}
-	public void setShop_id(Shop shop_id) {
-		this.shop_id = shop_id;
-	}
-	public Customer getCustomer() {
-		return customer;
-	}
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
-	}
+//	public Shop getShop_id() {
+//		return shop_id;
+//	}
+//	public void setShop_id(Shop shop_id) {
+//		this.shop_id = shop_id;
+//	}
+//	public Customer getCustomer() {
+//		return customer;
+//	}
+//	public void setCustomer(Customer customer) {
+//		this.customer = customer;
+//	}
 
 
 	
