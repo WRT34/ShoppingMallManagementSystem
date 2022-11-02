@@ -49,10 +49,10 @@ public class ShopController {
 		try {
 			service.updateShop(id, shop);
 			return new ResponseEntity<>(HttpStatus.OK);
-
+				
 		} catch (NoSuchElementException e) {
 			// TODO Auto-generated catch block
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-		}
+		}	
 	}
 }
