@@ -1,5 +1,6 @@
 package com.tnsif.client.controller;
 
+import java.util.NoSuchElementException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,8 +30,13 @@ public class ShopController {
 	
 	@GetMapping("/search/{id}")
 	public ResponseEntity<Shop> getShopOwnerById(@PathVariable Integer id){
-		Shop Shop = service.searchShop(id);
-		return new ResponseEntity<Shop>(Shop, HttpStatus.OK);
+		try {
+			Shop Shop = service.searchShop(id);
+			return new ResponseEntity<Shop>(Shop, HttpStatus.OK);
+		} catch (NoSuchElementException e) {
+			// TODO: handle exception
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
 	}
 	
 	@DeleteMapping("/delete/{id}")
@@ -39,7 +45,14 @@ public class ShopController {
 	}
 	
 	@PutMapping("/update/{id}")
-	public void updateShopOwner(@PathVariable Integer id,@RequestBody Shop shop) {
-		service.updateShop(id, shop);
+	public ResponseEntity<?> updateShopOwner(@PathVariable Integer id,@RequestBody Shop shop) {
+		try {
+			service.updateShop(id, shop);
+			return new ResponseEntity<>(HttpStatus.OK);
+
+		} catch (NoSuchElementException e) {
+			// TODO Auto-generated catch block
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
 	}
 }
