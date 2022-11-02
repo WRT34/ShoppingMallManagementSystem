@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +16,7 @@ import com.tnsif.client.entities.Mall;
 import com.tnsif.client.entities.Shop;
 import com.tnsif.client.entities.User;
 import com.tnsif.client.service.IAdminService;
+import com.tnsif.client.service.IUserService;
 
 
 @RestController
@@ -23,25 +25,7 @@ public class MallAdminController {
 	
 	@Autowired
 	private IAdminService service;
-	
-//	@GetMapping("searchMall/{id}")
-//	public ResponseEntity<Mall> getMallById(@PathVariable Integer id){
-//		 Mall mall = service.searchMall(id);
-//		return new ResponseEntity<Mall>(mall, HttpStatus.OK);
-//	}	
-	
-//	@GetMapping("searchMallAdmin/{id}")
-//	public ResponseEntity<MallAdmin> getMallAdminById(@PathVariable Integer id){
-//		 MallAdmin admin = service.searchMallAdmin(id);
-//		return new ResponseEntity<MallAdmin>(admin, HttpStatus.OK);
-//	}	
-	
-//	@GetMapping("/searchUser/{id}")
-//	public ResponseEntity<User> getUserById(@PathVariable Integer id){
-//		 User user = service.searchUser(id);
-//		return new ResponseEntity<User>(user, HttpStatus.OK);
-//	}	
-	
+		
 	@GetMapping("/approveShop/{id}")
 	public void approveNewShop(@RequestBody Shop shop){
 		 service.approveNewShop(shop);
@@ -52,21 +36,21 @@ public class MallAdminController {
 		service.updateUser(id, user);
 	}
 	
-//	@PutMapping("/update/{id}")
-//	public void updateMall(@PathVariable Integer id,@RequestBody Mall mall){
-//		service.updateMall(id, mall);
-//	}
+	@PutMapping("/update/{id}")
+	public void updateMall(@PathVariable Integer id,@RequestBody Mall mall){
+		service.updateMall(id, mall);
+	}
 	
-//	@PutMapping("/update/{id}")
-//	public void updateMallAdmin(@PathVariable Integer id,@RequestBody MallAdmin admin){
-//		service.updateMallAdmin(id, admin);
-//	}
-//	
-//	
-//	@DeleteMapping("MallAdmin/{id}")
-//	public void delete(@PathVariable Integer id) {
-//		service.deleteMallAdmin(id);
-//	}
-	
+	@GetMapping("/searchUser/{id}")
+	public User searchUser(@PathVariable Integer id) {
+		// TODO Auto-generated method stub
+		return service.searchUser(id);
+	}
+
+	@PostMapping("/addUser")
+	public void addUser(@RequestBody User user) {
+		// TODO Auto-generated method stub
+		service.addUser(user);
+	}
 	
 }

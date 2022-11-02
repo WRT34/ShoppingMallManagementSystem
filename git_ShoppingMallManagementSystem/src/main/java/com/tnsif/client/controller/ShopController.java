@@ -21,8 +21,7 @@ public class ShopController {
 
 	@Autowired
 	private IShopService service;
-	
-	
+
 	@PostMapping("/create")
 	public void createShop(@RequestBody Shop shop) {
 		service.addShop(shop);

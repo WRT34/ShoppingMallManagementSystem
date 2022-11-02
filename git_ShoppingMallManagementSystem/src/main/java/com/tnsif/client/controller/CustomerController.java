@@ -33,10 +33,6 @@ public class CustomerController {
 		return new ResponseEntity<List<Item>>(items, HttpStatus.OK);
 	}
 	
-//	@PostMapping("/orderItem")
-//	public void orderItem(@RequestBody OrderDetails order) {
-//		customerService.orderItem(order);
-//	}
 	
 	@PostMapping("/orderItems")
 	public void orderItems(@RequestBody Item item) {

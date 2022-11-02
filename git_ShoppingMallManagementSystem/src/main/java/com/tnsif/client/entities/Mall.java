@@ -21,24 +21,6 @@ public class Mall {
 		
 		@OneToOne(cascade = CascadeType.ALL)
 		private MallAdmin mallAdmin;
-		
-//		@OneToMany(cascade = CascadeType.ALL)
-//		@JoinColumn(referencedColumnName = "id")
-//		private List<Shop> shopId;
-		
-//		private Shop shop;
-
-
-//		public List<Shop> getShopId() {
-//			return shopId;
-//		}
-//
-//
-//
-//		public void setShopId(List<Shop> shopId) {
-//			this.shopId = shopId;
-//		}
-
 
 
 		public Integer getId() {
@@ -79,16 +61,6 @@ public class Mall {
 		public void setCategories(String categories) {
 			this.categories = categories;
 		}
-
-
-//		public Shop getShop() {
-//			return shop;
-//		}
-//
-//
-//		public void setShop(Shop shop) {
-//			this.shop = shop;
-//		}
 
 
 		public MallAdmin getMallAdmin() {
