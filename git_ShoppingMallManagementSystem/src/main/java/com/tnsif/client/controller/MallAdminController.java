@@ -42,6 +42,11 @@ public class MallAdminController {
 		}
 	}
 	
+	@PostMapping("/createMall")
+	public void createMall(Mall mall) {
+		service.createMall(mall);
+	}
+	
 	@PutMapping("/updateMall/{id}")
 	public ResponseEntity<?> updateMall(@PathVariable Integer id,@RequestBody Mall mall){
 		try {

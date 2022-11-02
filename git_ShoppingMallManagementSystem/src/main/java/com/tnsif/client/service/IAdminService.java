@@ -9,14 +9,17 @@ public interface IAdminService {
 	void approveNewShop(Shop shop);
 	
 	void updateUser(Integer id,User user);
-	
-	User login();
-	
-	boolean logout();
+		
+	void createMall(Mall mall);
 
 	void updateMall(Integer id, Mall mall);
 
 	User searchUser(Integer id);
 
 	void addUser(User user);
+	
+	User login();
+	
+	boolean logout();
+
 }

@@ -40,6 +40,12 @@ public class AdminServiceImpl implements IAdminService{
 		updateUser.setType(user.getType());
 		userRepository.save(updateUser);
 	}
+	
+	@Override
+	public void createMall(Mall mall) {
+		// TODO Auto-generated method stub
+		mallRepository.save(mall);
+	}
 
 	@Override
 	public void updateMall(Integer id, Mall mall) {
@@ -74,5 +80,7 @@ public class AdminServiceImpl implements IAdminService{
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	
 
 }
