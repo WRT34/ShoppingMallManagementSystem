@@ -1,9 +1,6 @@
 package com.tnsif.client.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,7 +13,6 @@ import com.tnsif.client.entities.Mall;
 import com.tnsif.client.entities.Shop;
 import com.tnsif.client.entities.User;
 import com.tnsif.client.service.IAdminService;
-import com.tnsif.client.service.IUserService;
 
 
 @RestController

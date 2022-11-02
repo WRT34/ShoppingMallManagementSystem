@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import com.tnsif.client.entities.Item;
 import com.tnsif.client.entities.Mall;
-import com.tnsif.client.entities.OrderDetails;
 import com.tnsif.client.entities.User;
 import com.tnsif.client.repository.IItemRepository;
 import com.tnsif.client.repository.IMallRepository;

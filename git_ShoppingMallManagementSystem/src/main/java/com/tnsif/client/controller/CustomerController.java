@@ -15,8 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.tnsif.client.entities.Item;
 import com.tnsif.client.entities.Mall;
-import com.tnsif.client.entities.OrderDetails;
-import com.tnsif.client.repository.IItemRepository;
 import com.tnsif.client.service.ICustomerService;
 
 @RestController
