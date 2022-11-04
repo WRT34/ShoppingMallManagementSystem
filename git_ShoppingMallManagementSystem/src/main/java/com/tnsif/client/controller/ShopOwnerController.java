@@ -14,39 +14,39 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.tnsif.client.entities.OrderDetails;
-import com.tnsif.client.service.OrderService;
+import com.tnsif.client.service.ShopOwnerService;
+import com.tnsif.client.entities.ShopOwner;
 
 @RestController
-@RequestMapping("order")
-public class OrderController {
-
+@RequestMapping("shop_owner")
+public class ShopOwnerController {
+	
 	@Autowired
-	private OrderService service;
-		
+	private ShopOwnerService service;
+	
 	@GetMapping("/list")
-	public List<OrderDetails> getAllOrders(){
-		return service.listAllOrders();
+	public List<ShopOwner> getAllShopOwners(){
+		return service.listAllShopOwners();
+	}
+	
+	@PostMapping("/create")
+	public void createShopOwner(@RequestBody ShopOwner shopOwner) {
+		service.addShopOwner(shopOwner);
 	}
 	
 	@GetMapping("/search/{id}")
-	public ResponseEntity<OrderDetails> getOrderById(@PathVariable Integer id){
-		OrderDetails order = service.searchOrder(id);
-		return new ResponseEntity<OrderDetails>(order, HttpStatus.OK);
-	}	
-	
-	@PostMapping("/create")
-	public void createOrder(@RequestBody OrderDetails order) {
-		service.addOrder(order);
-	}	
+	public ResponseEntity<ShopOwner> getShopOwnerById(@PathVariable Integer id){
+		ShopOwner owner = service.searchShopOwner(id);
+		return new ResponseEntity<ShopOwner>(owner, HttpStatus.OK);
+	}
 	
 	@DeleteMapping("/delete/{id}")
-	public void deleteOrderById(@PathVariable Integer id) {
-		service.deleteOrder(id);
+	public void deleteShopOwnerById(@PathVariable Integer id) {
+		service.deleteShopOwner(id);
 	}
 	
 	@PutMapping("/update/{id}")
-	public void updateOrder(@PathVariable Integer id,@RequestBody OrderDetails order){
-		service.updateOrder(id, order);
+	public void updateShopOwner(@PathVariable Integer id,@RequestBody ShopOwner shopOwner) {
+		service.updateShopOwner(id, shopOwner);
 	}
 }

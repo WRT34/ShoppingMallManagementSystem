@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.tnsif.client.entities.ShopOwner;
 
-public interface IShopOwnerRepository extends JpaRepository<ShopOwner, Integer>{
+public interface ShopOwnerRepository extends JpaRepository<ShopOwner, Integer>{
 
 }

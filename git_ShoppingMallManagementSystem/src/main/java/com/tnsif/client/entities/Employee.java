@@ -22,6 +22,20 @@ public class Employee {
 	
 //	@ManyToOne(cascade = CascadeType.ALL)
 //	private Shop shop;
+	
+	public Employee() {
+		super();
+	}
+
+	public Employee(Integer id, String name, LocalDate dob, Float salary, String address, String designation) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.dob = dob;
+		this.salary = salary;
+		this.address = address;
+		this.designation = designation;
+	}
 
 	public Integer getId() {
 		return id;
@@ -70,16 +84,6 @@ public class Employee {
 	public void setDesignation(String designation) {
 		this.designation = designation;
 	}
-
-//	public Shop getShop() {
-//		return shop;
-//	}
-//
-//	public void setShop(Shop shop) {
-//		this.shop = shop;
-//	}
-	
-
 	
 	
 	

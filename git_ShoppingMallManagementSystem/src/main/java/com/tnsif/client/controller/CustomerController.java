@@ -1,7 +1,6 @@
 package com.tnsif.client.controller;
 
 import java.util.List;
-import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -10,47 +9,44 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.tnsif.client.entities.Item;
-import com.tnsif.client.entities.Mall;
-import com.tnsif.client.service.ICustomerService;
+import com.tnsif.client.entities.Customer;
+import com.tnsif.client.service.CustomerService;
 
 @RestController
 @RequestMapping("customer")
 public class CustomerController {
 
 	@Autowired
-	private ICustomerService customerService;
-	
-	
-	@GetMapping("/searchItem/{name}")
-	public ResponseEntity<?> listItemsByName(@PathVariable String name){
-		try {
-			List<Item> items = customerService.searchItem(name);
-			return new ResponseEntity<List<Item>>(items, HttpStatus.OK);
-		} catch (NoSuchElementException e) {
-			// TODO: handle exception
-			return new ResponseEntity<>("No items found",HttpStatus.NOT_FOUND);
-		}
+	private CustomerService service;
+		
+	@GetMapping("/list")
+	public List<Customer> getAllCustomers(){
+		return service.listAllCustomers();
 	}
 	
+	@GetMapping("/search/{id}")
+	public ResponseEntity<Customer> getCustomerById(@PathVariable Integer id){
+		Customer customer = service.searchCustomer(id);
+		return new ResponseEntity<Customer>(customer, HttpStatus.OK);
+	}	
 	
-	@PostMapping("/orderItems")
-	public void orderItems(@RequestBody Item item) {
-		customerService.orderItem(item);
+	@PostMapping("/create")
+	public void createCustomer(@RequestBody Customer customer) {
+		service.addCustomer(customer);
+	}	
+	
+	@DeleteMapping("/delete/{id}")
+	public void deleteCustomerById(@PathVariable Integer id) {
+		service.deleteCustomer(id);
 	}
 	
-	@DeleteMapping("/cancelOrder/{id}")
-	public void cancelOrder(@PathVariable Integer id) {
-		customerService.cancelOrder(id);
-	}
-	
-	@GetMapping("/searchMall/{id}")
-	public ResponseEntity<Mall> searchMall(@PathVariable Integer id){
-		Mall mall = customerService.searchMall(id);
-		return new ResponseEntity<Mall>(mall,HttpStatus.OK);
+	@PutMapping("/update/{id}")
+	public void updateCustomer(@PathVariable Integer id,@RequestBody Customer customer){
+		service.updateCustomer(id, customer);
 	}
 }

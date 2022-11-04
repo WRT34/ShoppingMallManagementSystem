@@ -1,5 +1,6 @@
 package com.tnsif.client.service;
 
+import java.util.List;
 
 import javax.transaction.Transactional;
 
@@ -7,14 +8,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.tnsif.client.entities.Employee;
-import com.tnsif.client.repository.IEmployeeRepository;
+import com.tnsif.client.repository.EmployeeRepository;
 
 @Service
 @Transactional
-public class EmployeeServiceImpl implements IEmployeeService {
+public class EmployeeServiceImpl implements EmployeeService {
 	
 	@Autowired
-	private IEmployeeRepository repo;	
+	private EmployeeRepository repo;	
 	
 	@Override
 	public void addEmployee(Employee employee) {
@@ -43,6 +44,10 @@ public class EmployeeServiceImpl implements IEmployeeService {
 		repo.deleteById(id);
 	}
 
+	@Override
+	public List<Employee> listAllEmployees() {
+		return repo.findAll();
+	}
 	
 
 }

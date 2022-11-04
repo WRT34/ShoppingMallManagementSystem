@@ -7,68 +7,52 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.tnsif.client.entities.Item;
-import com.tnsif.client.entities.Mall;
-import com.tnsif.client.entities.User;
-import com.tnsif.client.repository.IItemRepository;
-import com.tnsif.client.repository.IMallRepository;
-import com.tnsif.client.repository.IOrderRepository;
-import com.tnsif.client.repository.IUserRepository;
+import com.tnsif.client.entities.Customer;
+import com.tnsif.client.repository.CustomerRepository;
 
 @Service
 @Transactional
-public class CustomerServiceImpl implements ICustomerService {
+public class CustomerServiceImpl implements CustomerService {
 
 	@Autowired
-	IItemRepository itemRepository;
-	
-	@Autowired
-	IMallRepository mallRepository;
-	
-	@Autowired
-	IUserRepository userRepository;
-	
-	@Autowired
-	IOrderRepository orderRepository;
+	private CustomerRepository customerRepository;
 	
 	@Override
-	public List<Item> searchItem(String itemName) {
+	public void addCustomer(Customer customer) {
 		// TODO Auto-generated method stub
-		return itemRepository.findByNameContaining(itemName);
+		customerRepository.save(customer);
 	}
 
 	@Override
-	public void orderItem(Item item) {
+	public void updateCustomer(Integer id, Customer customer) {
 		// TODO Auto-generated method stub
-		itemRepository.save(item);
-	}
-
-
-	@Override
-	public Mall searchMall(Integer id) {
-		// TODO Auto-generated method stub
-		return mallRepository.findById(id).get();
-	}
-
-	@Override
-	public boolean cancelOrder(Integer id) {
-		// TODO Auto-generated method stub
-		orderRepository.deleteById(id);
-		return !orderRepository.existsById(id);
+		Customer updateCustomer = this.searchCustomer(id);
+		updateCustomer.setEmail(customer.getEmail());
+		updateCustomer.setName(customer.getName());
+		updateCustomer.setOrders(customer.getOrders());
+		updateCustomer.setPhone(customer.getPhone());
+		this.addCustomer(updateCustomer);
 	}
 
 	@Override
-	public User login(User user) {
+	public Customer searchCustomer(Integer id) {
 		// TODO Auto-generated method stub
-		return user;
+		return customerRepository.findById(id).get();
 	}
 
 	@Override
-	public boolean logout() {
+	public void deleteCustomer(Integer id) {
 		// TODO Auto-generated method stub
-		return false;
+		customerRepository.deleteById(id);
 	}
 
-	
+	@Override
+	public List<Customer> listAllCustomers() {
+		// TODO Auto-generated method stub
+		return customerRepository.findAll();
+	}
+
+
+
 
 }

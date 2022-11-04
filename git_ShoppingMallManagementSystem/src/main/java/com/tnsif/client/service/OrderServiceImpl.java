@@ -1,25 +1,22 @@
 package com.tnsif.client.service;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.tnsif.client.entities.Item;
 import com.tnsif.client.entities.OrderDetails;
-import com.tnsif.client.repository.IItemRepository;
-import com.tnsif.client.repository.IOrderRepository;
+import com.tnsif.client.repository.OrderRepository;
 
 @Service
 @Transactional
-public class OrderServiceImpl implements IOrderService {
+public class OrderServiceImpl implements OrderService{
 
 	@Autowired
-	private IOrderRepository orderRepository;
-	
-	@Autowired
-	private IItemRepository itemRepository;
-	
+	private OrderRepository orderRepository;
+
 	@Override
 	public void addOrder(OrderDetails order) {
 		// TODO Auto-generated method stub
@@ -29,11 +26,11 @@ public class OrderServiceImpl implements IOrderService {
 	@Override
 	public void updateOrder(Integer id, OrderDetails order) {
 		// TODO Auto-generated method stub
-		 OrderDetails updateOrder = this.searchOrder(id);
-		 updateOrder.setPaymentMode(order.getPaymentMode());
-		 updateOrder.setDateOfPurchase(order.getDateOfPurchase());
-		 updateOrder.setTotal(order.getTotal());
-		 this.addOrder(updateOrder);	
+		OrderDetails updateOrder = this.searchOrder(id);
+		updateOrder.setDateOfPurchase(order.getDateOfPurchase());
+		updateOrder.setPaymentMode(order.getPaymentMode());
+		updateOrder.setTotal(order.getTotal());
+		this.addOrder(updateOrder);
 	}
 
 	@Override
@@ -43,15 +40,16 @@ public class OrderServiceImpl implements IOrderService {
 	}
 
 	@Override
-	public void cancelOrder(Integer id) {
+	public void deleteOrder(Integer id) {
 		// TODO Auto-generated method stub
 		orderRepository.deleteById(id);
 	}
 
 	@Override
-	public void addItem(Item item) {
+	public List<OrderDetails> listAllOrders() {
 		// TODO Auto-generated method stub
-		itemRepository.save(item);
+		return orderRepository.findAll();
 	}
-
+	
+	
 }

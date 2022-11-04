@@ -1,22 +1,24 @@
 package com.tnsif.client.service;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.tnsif.client.entities.User;
-import com.tnsif.client.repository.IUserRepository;
+import com.tnsif.client.repository.UserRepository;
 
 @Service
 @Transactional
-public class UserServiceImpl implements IUserService {
+public class UserServiceImpl implements UserService {
 
 	@Autowired
-	private IUserRepository userRepository;
+	private UserRepository userRepository;
 	
 	@Override
-	public void addNewUser(User user) {
+	public void addUser(User user) {
 		// TODO Auto-generated method stub
 		userRepository.save(user);
 	}
@@ -24,24 +26,29 @@ public class UserServiceImpl implements IUserService {
 	@Override
 	public void updateUser(Integer id, User user) {
 		// TODO Auto-generated method stub
-		User updateUser = userRepository.findById(id).get();
+		User updateUser = this.searchUser(id);
 		updateUser.setName(user.getName());
 		updateUser.setPassword(user.getPassword());
 		updateUser.setType(user.getType());
-		userRepository.save(updateUser);
-
+		this.addUser(updateUser);
 	}
 
 	@Override
-	public User login() {
+	public User searchUser(Integer id) {
 		// TODO Auto-generated method stub
-		return null;
+		return userRepository.findById(id).get();
 	}
 
 	@Override
-	public boolean logout() {
+	public void deleteUser(Integer id) {
 		// TODO Auto-generated method stub
-		return false;
+		userRepository.deleteById(id);
+	}
+
+	@Override
+	public List<User> listAllUsers() {
+		// TODO Auto-generated method stub
+		return userRepository.findAll();
 	}
 
 }

@@ -15,45 +15,45 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.tnsif.client.entities.User;
-import com.tnsif.client.service.UserService;
+import com.tnsif.client.entities.Mall;
+import com.tnsif.client.service.MallService;
 
 @RestController
-@RequestMapping("user")
-public class UserController {
+@RequestMapping("mall")
+public class MallController {
 
 	@Autowired
-	private UserService service;
+	private MallService service;
 		
 	@GetMapping("/list")
-	public List<User> getAllUsers(){
-		return service.listAllUsers();
+	public List<Mall> getAllMalls(){
+		return service.listAllMalls();
 	}
 	
 	@GetMapping("/search/{id}")
-	public ResponseEntity<?> searchUser(@PathVariable Integer id) {
-		// TODO Auto-generated method stub
-		try {
-		    User user = service.searchUser(id);
-		    return new ResponseEntity<User>(user, HttpStatus.OK);
-		}
-		catch(NoSuchElementException e) {
-			return new ResponseEntity<>("User not found", HttpStatus.NOT_FOUND);
-		}
+	public ResponseEntity<Mall> getMallById(@PathVariable Integer id){
+		Mall mall = service.searchMall(id);
+		return new ResponseEntity<Mall>(mall, HttpStatus.OK);
 	}	
 	
 	@PostMapping("/create")
-	public void createUser(@RequestBody User user) {
-		service.addUser(user);
+	public void createMall(@RequestBody Mall mall) {
+		service.addMall(mall);
 	}	
 	
 	@DeleteMapping("/delete/{id}")
-	public void deleteUserById(@PathVariable Integer id) {
-		service.deleteUser(id);
+	public void deleteMallById(@PathVariable Integer id) {
+		service.deleteMall(id);
 	}
 	
 	@PutMapping("/update/{id}")
-	public void updateUser(@PathVariable Integer id,@RequestBody User user){
-		service.updateUser(id, user);
+	public ResponseEntity<?> updateMall(@PathVariable Integer id,@RequestBody Mall mall){
+		try {
+			service.updateMall(id, mall);
+			return new ResponseEntity<>("Mall updated", HttpStatus.OK);
+		} catch (NoSuchElementException e) {
+			// TODO Auto-generated catch block
+			return new ResponseEntity<>("Mall not found", HttpStatus.NOT_FOUND);
+		}
 	}
 }
