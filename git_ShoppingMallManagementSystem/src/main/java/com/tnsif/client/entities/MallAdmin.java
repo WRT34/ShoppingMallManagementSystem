@@ -1,12 +1,10 @@
 package com.tnsif.client.entities;
 
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 
 @Entity
 public class MallAdmin {
@@ -18,14 +16,14 @@ public class MallAdmin {
 	private String password;
 	private String phone;
 	
-	@OneToOne(cascade = CascadeType.ALL, mappedBy = "mallAdmin")
-	private Mall mall;
+//	@OneToOne(cascade = CascadeType.ALL, mappedBy = "mallAdmin")
+//	private Mall mall;
 	
 //	@OneToOne(cascade = CascadeType.ALL)
 //	private ShopOwner shopOwner;
 //	
-	@OneToOne(cascade = CascadeType.ALL)
-	private User user;
+//	@OneToOne(cascade = CascadeType.ALL)
+//	private User user;
 
 	public Integer getId() {
 		return id;
@@ -67,14 +65,14 @@ public class MallAdmin {
 	}
 
 
-	public Mall getMall() {
-		return mall;
-	}
-
-
-	public void setMall(Mall mall) {
-		this.mall = mall;
-	}
+//	public Mall getMall() {
+//		return mall;
+//	}
+//
+//
+//	public void setMall(Mall mall) {
+//		this.mall = mall;
+//	}
 
 
 //	public ShopOwner getShopOwner() {
@@ -97,11 +95,11 @@ public class MallAdmin {
 //	}
 
 
-	@Override
-	public String toString() {
-		return "MallAdmin [id=" + id + ", name=" + name + ", password=" + password + ", mall=" + mall + ", phone="
-				+ phone + "]";
-	}
+//	@Override
+//	public String toString() {
+//		return "MallAdmin [id=" + id + ", name=" + name + ", password=" + password + ", mall=" + mall + ", phone="
+//				+ phone + "]";
+//	}
 	
 	
 	

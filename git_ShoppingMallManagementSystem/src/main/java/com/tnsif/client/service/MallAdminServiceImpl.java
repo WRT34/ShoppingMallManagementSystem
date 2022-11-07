@@ -27,7 +27,6 @@ public class MallAdminServiceImpl implements MallAdminService {
 	public void updateMallAdmin(Integer id, MallAdmin mallAdmin) {
 		// TODO Auto-generated method stub
 		MallAdmin updateMallAdmin = this.searchMallAdmin(id);
-		updateMallAdmin.setMall(mallAdmin.getMall());
 		updateMallAdmin.setName(mallAdmin.getName());
 		updateMallAdmin.setPassword(mallAdmin.getPassword());
 		updateMallAdmin.setPhone(mallAdmin.getPhone());
