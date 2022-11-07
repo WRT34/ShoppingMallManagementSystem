@@ -21,8 +21,8 @@ public class Customer {
 	private String email ;
 	private String phone;
 	
-	@OneToOne(cascade = CascadeType.ALL)
-	private User user;
+//	@OneToOne(cascade = CascadeType.ALL)
+//	private User user;
 	
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(referencedColumnName = "id")
