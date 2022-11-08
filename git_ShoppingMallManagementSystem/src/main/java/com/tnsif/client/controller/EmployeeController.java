@@ -1,9 +1,9 @@
 package com.tnsif.client.controller;
 
 import java.util.List;
-import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -36,7 +36,7 @@ public class EmployeeController {
 		try {
 			Employee employee = service.searchEmployee(id);
 			return new ResponseEntity<Employee>(employee, HttpStatus.OK);
-		} catch (NoSuchElementException e) {
+		} catch (ResourceNotFoundException e) {
 			// TODO Auto-generated catch block
 			return new ResponseEntity<>("Employee not found", HttpStatus.NOT_FOUND);
 		}

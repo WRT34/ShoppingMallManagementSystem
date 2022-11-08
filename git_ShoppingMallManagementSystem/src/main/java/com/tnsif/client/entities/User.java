@@ -16,14 +16,6 @@ public class User {
 	private String type;
 	private String password;
 	
-//	@OneToOne(cascade = CascadeType.ALL, mappedBy = "user")
-//	private Customer customer;
-//	
-//	@OneToOne(cascade = CascadeType.ALL, mappedBy = "user")
-//	private MallAdmin mallAdmin;
-//	
-//	@OneToOne(cascade = CascadeType.ALL, mappedBy = "user")
-//	private ShopOwner shopOwner;
 	
 	public User(Integer id, String name, String type, String password, Customer customer, MallAdmin mallAdmin,
 			ShopOwner shopOwner) {
