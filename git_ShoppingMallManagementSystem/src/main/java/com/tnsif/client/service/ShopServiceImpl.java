@@ -40,7 +40,7 @@ public class ShopServiceImpl implements ShopService{
 	@Override
 	public Shop searchShop(Integer id) {
 		// TODO Auto-generated method stub
-		return repo.findById(id).get();
+		return repo.findById(id).orElseThrow(()-> new ShopNotFoundException("asghgs ahgs gsh"));
 	}
 
 	@Override
