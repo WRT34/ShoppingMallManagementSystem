@@ -46,20 +46,24 @@ public class EmployeeController {
 	
 	//RESTful API method for Create operation
 	@PostMapping("/create")
-	public void createEmployee(@RequestBody Employee employee) {
+	public ResponseEntity<?> createEmployee(@RequestBody Employee employee) {
 		service.addEmployee(employee);
+		return new ResponseEntity<String>("Employee Added", HttpStatus.OK);
+
 	}	
 	
 	// RESTful API method for Delete operation
 	@DeleteMapping("/delete/{id}")
-	public void deleteEmployeeById(@PathVariable Integer id) {
+	public ResponseEntity<?> deleteEmployeeById(@PathVariable Integer id) {
 		service.deleteEmployee(id);
+		return new ResponseEntity<String>("Employee "+id+" Deleted", HttpStatus.OK);
 	}
 	
 	//RESTful API method for Update operation
 	@PutMapping("/update/{id}")
-	public void updateEmployee(@PathVariable Integer id,@RequestBody Employee employeeDetails){
+	public ResponseEntity<?> updateEmployee(@PathVariable Integer id,@RequestBody Employee employeeDetails){
 		service.updateEmployee(id, employeeDetails);
+		return new ResponseEntity<String>("Employee "+id+" Updated", HttpStatus.OK);
 	}
 	
 }

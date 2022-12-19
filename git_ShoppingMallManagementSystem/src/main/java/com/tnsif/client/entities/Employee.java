@@ -7,7 +7,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
+//@JsonPOJOBuilder(buildMethodName = "buildEmployee", withPrefix = "set")
 @Entity
 public class Employee {
 	
@@ -27,9 +29,9 @@ public class Employee {
 		super();
 	}
 
-	public Employee(Integer id, String name, LocalDate dob, Float salary, String address, String designation) {
+	public Employee( String name, LocalDate dob, Float salary, String address, String designation) {
 		super();
-		this.id = id;
+//		this.id = id;
 		this.name = name;
 		this.dob = dob;
 		this.salary = salary;
