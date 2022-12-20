@@ -39,8 +39,8 @@ public class EmployeeRepositoryTests {
 	@Test
 	@Order(2)
 	public void getEmployeeTest() {
-		Employee employee = employeeRepository.findById(221).get();
-		Assertions.assertThat(employee.getId()).isEqualTo(221);
+		Employee employee = employeeRepository.findById(1).get();
+		Assertions.assertThat(employee.getId()).isEqualTo(1);
 	}
 	
 	@Test
@@ -53,7 +53,7 @@ public class EmployeeRepositoryTests {
 	@Test
 	@Order(4)
 	public void updateEmployeeTest() {
-		Employee employee = employeeRepository.findById(221).get();
+		Employee employee = employeeRepository.findById(7).get();
 		employee.setAddress("France");
 		employeeRepository.save(employee);
 		Assertions.assertThat(employeeRepository.save(employee).getAddress()).isEqualTo("France");
@@ -63,7 +63,7 @@ public class EmployeeRepositoryTests {
 	@Test
 	@Order(5)
 	public void deleteEmployeeTest() {
-		Employee employee = employeeRepository.findById(221).get();
+		Employee employee = employeeRepository.findById(7).get();
 		
 		employeeRepository.delete(employee);
 		
