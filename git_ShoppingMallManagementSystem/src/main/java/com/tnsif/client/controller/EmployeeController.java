@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.tnsif.client.entities.Employee;
 import com.tnsif.client.service.EmployeeService;
 
-@CrossOrigin(origins = "http://localhost:3000")
+//@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("employee")
 public class EmployeeController {

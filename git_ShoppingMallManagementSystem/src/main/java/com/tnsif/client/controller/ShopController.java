@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.tnsif.client.entities.Shop;
 import com.tnsif.client.service.ShopService;
 
-@CrossOrigin(origins = "http://localhost:3000")
+//@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("shop")
 public class ShopController {
