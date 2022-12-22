@@ -53,7 +53,7 @@ public class EmployeeRepositoryTests {
 	@Test
 	@Order(4)
 	public void updateEmployeeTest() {
-		Employee employee = employeeRepository.findById(7).get();
+		Employee employee = employeeRepository.findById(21).get();
 		employee.setAddress("France");
 		employeeRepository.save(employee);
 		Assertions.assertThat(employeeRepository.save(employee).getAddress()).isEqualTo("France");
@@ -63,7 +63,7 @@ public class EmployeeRepositoryTests {
 	@Test
 	@Order(5)
 	public void deleteEmployeeTest() {
-		Employee employee = employeeRepository.findById(7).get();
+		Employee employee = employeeRepository.findById(21).get();
 		
 		employeeRepository.delete(employee);
 		
