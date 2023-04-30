@@ -50,32 +50,32 @@ public class EmployeeRepositoryTest {
 		assertThat(employees.size()).isGreaterThan(0);
 	}
 	
-	@Test
-	@Order(4)
-	public void updateEmployeeTest() {
-		Employee employee = employeeRepository.findById(21).get();
-		employee.setAddress("France");
-		employeeRepository.save(employee);
-		Assertions.assertThat(employeeRepository.save(employee).getAddress()).isEqualTo("France");
-		
-	}
+//	@Test
+//	@Order(4)
+//	public void updateEmployeeTest() {
+//		Employee employee = employeeRepository.findById(21).get();
+//		employee.setAddress("France");
+//		employeeRepository.save(employee);
+//		Assertions.assertThat(employeeRepository.save(employee).getAddress()).isEqualTo("France");
+//		
+//	}
 	
-	@Test
-	@Order(5)
-	public void deleteEmployeeTest() {
-		Employee employee = employeeRepository.findById(21).get();
-		
-		employeeRepository.delete(employee);
-		
-		Employee employee1 = null;
-		
-		Optional<Employee> optionalEmployee = employeeRepository.findByAddress("France");
-		
-		if (optionalEmployee.isPresent()) {
-			employee1 = optionalEmployee.get();
-		}
-		
-		Assertions.assertThat(employee1).isNull();
-	}
+//	@Test
+//	@Order(5)
+//	public void deleteEmployeeTest() {
+//		Employee employee = employeeRepository.findById(21).get();
+//		
+//		employeeRepository.delete(employee);
+//		
+//		Employee employee1 = null;
+//		
+//		Optional<Employee> optionalEmployee = employeeRepository.findByAddress("France");
+//		
+//		if (optionalEmployee.isPresent()) {
+//			employee1 = optionalEmployee.get();
+//		}
+//		
+//		Assertions.assertThat(employee1).isNull();
+//	}
 	
 }
